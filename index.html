@@ -55,6 +55,12 @@
             All semesters - View all assignments
         </a>
 
+
+
+        <br><br><br>
+        <a href="javascript:(function()%7B%2F%2F%20hide%20all%20but%20the%20unsubmitted%20assignments%0A%0A%2F%2F%20for%20main%20page%0Alist%20%3D%20document.getElementsByClassName(%22d_gt%22)%3B%0Afor%20(let%20i%3Dlist.length%3B%20i%3E%3D0%3B%20i%3Di-1)%7B%0A%20%20let%20td%20%3D%20list%5Bi%5D%3B%0A%20%20console.log(td)%3B%20%20%0A%20%20if(%20td%20%26%26%20td.className%20%3D%3D%20%22d_gt%22%0A%20%20%20%20%20%20%20%20%26%26%20!%20td.firstChild.innerText.startsWith(%22Not%20Sub%22)%0A%20%20%20%20%20%20)%7B%0A%20%20%20%20%20%20%20%20%20td.parentElement.hidden%3Dtrue%3B%0A%20%20%7D%0A%7D%0A%0A%2F%2F%20for%20iframe%20pages%0Afor%20(const%20ifr%20of%20document.getElementsByTagName(%22iframe%22))%7B%0A%20%20%0A%20%20list%20%3D%20ifr.contentWindow.document.getElementsByClassName(%22d_gt%22)%3B%0A%20%20for%20(let%20i%3Dlist.length%3B%20i%3E%3D0%3B%20i%3Di-1)%7B%0A%20%20%20%20let%20td%20%3D%20list%5Bi%5D%3B%0A%20%20%20%20console.log(td)%3B%20%20%0A%20%20%20%20if(%20td%20%26%26%20td.className%20%3D%3D%20%22d_gt%22%0A%20%20%20%20%20%20%20%20%20%20%26%26%20!%20td.firstChild.innerText.startsWith(%22Not%20Sub%22)%0A%20%20%20%20%20%20%20%20)%7B%0A%20%20%20%20%20%20%20%20%20%20%20td.parentElement.hidden%3Dtrue%3B%0A%20%20%20%20%7D%0A%20%20%7D%0A%09ifr.height%20%3D%20ifr.contentWindow.document.body.scrollHeight%3B%0A%7D%7D)()%3B">
+            hide submitted assi
+        </a>
         
     </body>
     </html>
