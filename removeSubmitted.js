@@ -1,13 +1,13 @@
 
-/// not yet working.
+// remove
 
-for( const td of document.getElementsByClassName("d_gt") ){
-  if( 
-          td.has
-        && td.firstChild.title.startsWith("Submission") 
+list = document.getElementsByClassName("d_gt");
+for (let i=list.length; i>=0; i=i-1){
+  let td = list[i];
+  console.log(td);  
+  if( td && td.className == "d_gt"
         && ! td.firstChild.innerText.startsWith("Not Sub")
-){
-   td.parentElement.remove();
+      ){
+         td.parentElement.hidden=true;
+  }
 }
-}
-
