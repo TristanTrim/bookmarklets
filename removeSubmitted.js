@@ -1,5 +1,5 @@
 
-// remove
+// hide all but the unsubmitted assignments
 
 list = document.getElementsByClassName("d_gt");
 for (let i=list.length; i>=0; i=i-1){
