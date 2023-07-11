@@ -1,0 +1,104 @@
+
+
+
+
+    <!doctype html>
+    <html>
+    <head>
+    <title>TT bookmarklets</title>
+    <meta name="description" content="Yup">
+    <meta name="keywords" content="bookmarklet">
+    </head>
+    <body>
+
+<br><br>
+
+
+      <a href='
+
+
+function fromGetCourseNum(){
+  // get course numbers. afaik this is a brightspace thing...
+  window.coursenums = [];
+  window.classmates = {};
+  
+  for(const el of document.getElementsByClassName("vui-list")[0].children){
+  
+    let name = el.children[0].children[0].children[0].children[0].innerHTML;
+    if( name.startsWith("Summer 2023")){
+      var link = el.children[0].children[0].children[0].children[0].href.split("/");
+      var coursenum = link[link.length-1];
+      window.coursenums.push(coursenum);
+  
+      addIframe(coursenum, name);
+    }
+  }
+
+}
+
+function resizeIFrameToFitContent( iFrame ) {
+
+  //  iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
+    iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
+}
+
+
+
+function addIframe(coursenum, name ){
+
+  // make iframe for working with other pages
+  let title = document.createElement("div");
+  title.innerHTML = name ;
+  document.body.append(title);
+
+  window.ifr = document.createElement("iframe");
+  document.body.append(window.ifr);
+  window.ifr.width = window.innerWidth-20;
+ // window.ifr.height = window.innerHeight-10;
+ // window.scrollTo(0,document.body.scrollHeight);
+  
+  window.classesToSearch = [...window.coursenums];
+  // use:
+  // window.ifr.src = "url";
+  // window.ifr.onload = ...
+
+ // set iframe size based on content
+  let thisifr = window.ifr;
+  window.ifr.onload = ()=>{ 
+			setTimeout( 
+				()=>{ resizeIFrameToFitContent( thisifr ); },
+				200); } ;
+
+ // load grades
+  window.ifr.src = "https://bright.uvic.ca/d2l/lms/grades/my_grades/main.d2l?ou=" + coursenum;
+
+}
+
+// start script /////////////////////
+
+//open dropdown
+
+// TODO needs time for load
+// document.getElementsByClassName("d2l-navigation-s-course-menu")[0].children[0].openDropdown()
+// setTimeout(fromGetCourseNum,1000);
+
+// It doesnt need to be open, just loaded, which I dont know how to do... wtf
+
+lists = document.getElementsByClassName("vui-list");
+if (lists.length > 0){
+  // awesome
+  // get rid of old content
+  document.getElementsByClassName("d2l-page-main")[0].remove()
+  // get new content
+  fromGetCourseNum();
+}else{
+ alert("Please click the 3x3 grid menu button before running this script.");
+}
+
+        
+                 '>Show Grades</a>
+
+
+      
+    </body>
+    </html>
