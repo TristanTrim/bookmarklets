@@ -68,15 +68,21 @@ function addIframe(coursenum, name ){
 
 lists = document.getElementsByClassName("vui-list");
 
-if (lists.length > 0){
+if (lists.length > 0 
+    && lists[0].className == "d2l-datalist vui-list" 
+   ){
   // awesome
   // get rid of old content
   document.getElementsByClassName("d2l-page-main")[0].remove()
   // get new content
   fromGetCourseNum();
 }else{
- alert("Please click the 3x3 grid menu button before running this script.");
+   alert("Please click the 3x3 grid menu button before running this script.");
 }
+
+
+
+
 
 
 
