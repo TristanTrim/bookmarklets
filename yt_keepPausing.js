@@ -1,4 +1,6 @@
 
+p = document.getElementById("movie_player")
+
 function keepPausing(){
   p.pauseVideo();
   alert("u best be moving on now");
